@@ -30,9 +30,7 @@ public class ParkingLot {
     }
 
     public Car fetch(Ticket ticket) {
-        if (ticket.getIssuedBy() != this.name) {
-            return null;
-        } else if (ticket.isUsed()) {
+        if (ticket.getIssuedBy() != this.name || ticket.isUsed()) {
             return null;
         }
         ticket.setIsUsed();
