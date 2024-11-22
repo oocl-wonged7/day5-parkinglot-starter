@@ -5,6 +5,7 @@ import java.util.Map;
 
 public class ParkingLot {
     private static final int DEFAULT_CAPACITY = 10;
+    public static final String UNRECOGNIZED_PARKING_TICKET_MESSAGE = "Unrecognized parking ticket.";
 
     private Map<Ticket, Car> parkingRecord = new HashMap<Ticket, Car>();
     private String name;
@@ -29,9 +30,9 @@ public class ParkingLot {
         return ticket;
     }
 
-    public Car fetch(Ticket ticket) {
+    public Car fetch(Ticket ticket) throws Exception {
         if (ticket.getIssuedBy() != this.name || ticket.isUsed()) {
-            return null;
+            throw new Exception(UNRECOGNIZED_PARKING_TICKET_MESSAGE);
         }
         ticket.setIsUsed();
         return parkingRecord.remove(ticket);

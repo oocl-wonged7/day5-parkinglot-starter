@@ -1,9 +1,12 @@
 package com.parkinglot;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertNull;
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 public class ParkingLotTest {
     @Test
@@ -20,7 +23,7 @@ public class ParkingLotTest {
     }
 
     @Test
-    void should_return_car_when_fetch_given_a_ticket(){
+    void should_return_car_when_fetch_given_a_ticket() throws Exception {
         // Given
         ParkingLot parkingLot = new ParkingLot("Good Parking Lot");
         Car car = new Car();
@@ -34,7 +37,7 @@ public class ParkingLotTest {
     }
 
     @Test
-    void should_return_right_car_when_fetch_twice_given_two_ticket(){
+    void should_return_right_car_when_fetch_twice_given_two_ticket() throws Exception {
         // Given
         ParkingLot parkingLot = new ParkingLot("Good Parking Lot");
         Car firstCar = new Car();
@@ -52,7 +55,7 @@ public class ParkingLotTest {
     }
 
     @Test
-    void should_return_null_when_fetch_car_given_wrong_ticket(){
+    void should_print_error_message_when_fetch_given_a_wrong_ticket() throws Exception {
         // Given
         ParkingLot parkingLot = new ParkingLot("Good Parking Lot");
         Car car = new Car();
@@ -60,14 +63,16 @@ public class ParkingLotTest {
         Ticket wrongTicket = new Ticket("another Parking Lot");
 
         // When
-        Car carFetched = parkingLot.fetch(wrongTicket);
+        Exception exception = assertThrows(Exception.class, () -> parkingLot.fetch(wrongTicket));
 
         // Then
-        assertNull(carFetched);
+        String expectedMessage = "Unrecognized parking ticket.";
+        String exceptionMessage = exception.getMessage();
+        assertTrue(exceptionMessage.contains(expectedMessage));
     }
 
     @Test
-    void should_return_null_when_fetch_given_a_used_ticket(){
+    void should_return_null_when_fetch_given_a_used_ticket() throws Exception {
         // Given
         ParkingLot parkingLot = new ParkingLot("Good Parking Lot");
         Car car = new Car();
@@ -75,10 +80,12 @@ public class ParkingLotTest {
         parkingLot.fetch(ticket);
 
         // When
-        Car carFetchedWithUsedTicket = parkingLot.fetch(ticket);
+        Exception exception = assertThrows(Exception.class, () -> parkingLot.fetch(ticket));
 
         // Then
-        assertNull(carFetchedWithUsedTicket);
+        String expectedMessage = "Unrecognized parking ticket.";
+        String exceptionMessage = exception.getMessage();
+        assertTrue(exceptionMessage.contains(expectedMessage));
     }
 
     @Test
@@ -113,5 +120,4 @@ public class ParkingLotTest {
         // Then
         assertNull(ticket);
     }
-
 }
