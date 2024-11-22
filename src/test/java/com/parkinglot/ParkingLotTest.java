@@ -72,7 +72,7 @@ public class ParkingLotTest {
     }
 
     @Test
-    void should_return_null_when_fetch_given_a_used_ticket() throws Exception {
+    void should_return_error_message_when_fetch_given_a_used_ticket() throws Exception {
         // Given
         ParkingLot parkingLot = new ParkingLot("Good Parking Lot");
         Car car = new Car();
@@ -89,7 +89,7 @@ public class ParkingLotTest {
     }
 
     @Test
-    void should_return_null_when_park_given_no_space_left() throws Exception {
+    void should_return_error_message_when_park_given_no_space_left() throws Exception {
         // Given
         ParkingLot parkingLot = new ParkingLot("Good Parking Lot");
         Car car1 = new Car();
