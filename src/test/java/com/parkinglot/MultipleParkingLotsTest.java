@@ -111,4 +111,31 @@ public class MultipleParkingLotsTest {
         String exceptionMessage = exception.getMessage();
         assertTrue(expectedMessage.equals(exceptionMessage));
     }
+
+    @Test
+    void should_return_error_message_when_park_given_2_parking_lot_and_no_position_left_() {
+        // Given
+        ParkingLot firstParkingLot = new ParkingLot("First Parking Lot");
+        ParkingLot secondParkingLot = new ParkingLot("Second Parking Lot");
+        ParkingBoy parkingBoy = new ParkingBoy();
+        parkingBoy.addParkingLot(firstParkingLot);
+        parkingBoy.addParkingLot(secondParkingLot);
+        for (int i = 0; i < firstParkingLot.getCapacity(); i++){
+            Car car = new Car();
+            firstParkingLot.park(car);
+        }
+        for (int i = 0; i < secondParkingLot.getCapacity(); i++){
+            Car car = new Car();
+            secondParkingLot.park(car);
+        }
+        Car anotherCar = new Car();
+
+        // When
+        Exception exception = assertThrows(NoAvailablePositionException.class, () -> parkingBoy.park(anotherCar));
+
+        // Then
+        String expectedMessage = "No available position.";
+        String exceptionMessage = exception.getMessage();
+        assertTrue(expectedMessage.equals(exceptionMessage));
+    }
 }

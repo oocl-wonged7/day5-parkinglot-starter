@@ -96,7 +96,7 @@ public class ParkingBoyTest {
         ParkingBoy parkingBoy = new ParkingBoy(parkingLot);
         for (int i = 0; i < parkingLot.getCapacity(); i++){
             Car car = new Car();
-            parkingBoy.park(car);
+            parkingLot.park(car);
         }
         Car anotherCar = new Car();
 
