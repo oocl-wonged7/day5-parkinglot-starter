@@ -32,6 +32,7 @@ public class ParkingBoy {
     }
 
     public Car fetch(Ticket ticket) {
+        ParkingLot parkingLot = parkingLots.get(ticket.getIssuedBy());
         return parkingLot.fetch(ticket);
     }
 }

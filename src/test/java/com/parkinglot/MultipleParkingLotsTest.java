@@ -40,4 +40,30 @@ public class MultipleParkingLotsTest {
         // Then
         assert(ticket.getIssuedBy().equals(secondParkingLot.getName()));
     }
+
+    @Test
+    void should_fetch_2_car_in_correct_order_when_fetch_twice_given_fetch_from_both_parking_lot(){
+        // Given
+        ParkingLot firstParkingLot = new ParkingLot("First Parking Lot");
+        ParkingLot secondParkingLot = new ParkingLot("Second Parking Lot");
+        ParkingBoy parkingBoy = new ParkingBoy();
+        parkingBoy.addParkingLot(firstParkingLot);
+        parkingBoy.addParkingLot(secondParkingLot);
+        for (int i = 0; i < firstParkingLot.getCapacity() - 1; i++){
+            Car car = new Car();
+            parkingBoy.park(car);
+        }
+        Car firstCar = new Car();
+        Ticket firstTicket = parkingBoy.park(firstCar);
+        Car secondCar = new Car();
+        Ticket secnodTicket = parkingBoy.park(secondCar);
+
+        // When
+        Car firstCarFetched = parkingBoy.fetch(firstTicket);
+        Car secondCarFetched = parkingBoy.fetch(secnodTicket);
+
+        // Then
+        assert(firstCar.equals(firstCarFetched));
+        assert(secondCar.equals(secondCarFetched));
+    }
 }
