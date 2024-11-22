@@ -64,7 +64,7 @@ public class ParkingLotTest {
         // Then
         String expectedMessage = "Unrecognized parking ticket.";
         String exceptionMessage = exception.getMessage();
-        assertTrue(exceptionMessage.contains(expectedMessage));
+        assertTrue(expectedMessage.equals(exceptionMessage));
     }
 
     @Test
@@ -81,7 +81,7 @@ public class ParkingLotTest {
         // Then
         String expectedMessage = "Unrecognized parking ticket.";
         String exceptionMessage = exception.getMessage();
-        assertTrue(exceptionMessage.contains(expectedMessage));
+        assertTrue(expectedMessage.equals(exceptionMessage));
     }
 
     @Test
@@ -116,6 +116,6 @@ public class ParkingLotTest {
         // Then
         String expectedMessage = "No available position.";
         String exceptionMessage = exception.getMessage();
-        assertTrue(exceptionMessage.contains(expectedMessage));
+        assertTrue(expectedMessage.equals(exceptionMessage));
     }
 }
