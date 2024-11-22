@@ -90,7 +90,7 @@ public class ParkingBoyTest {
     }
 
     @Test
-    void should_return_error_message_when_park_given_a_parking_lot_and_no_space_left_() {
+    void should_return_error_message_when_park_given_a_parking_lot_and_no_position_left_() {
         // Given
         ParkingLot parkingLot = new ParkingLot("Good Parking Lot");
         ParkingBoy parkingBoy = new ParkingBoy(parkingLot);

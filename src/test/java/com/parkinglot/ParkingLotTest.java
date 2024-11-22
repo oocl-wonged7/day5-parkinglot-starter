@@ -85,7 +85,7 @@ public class ParkingLotTest {
     }
 
     @Test
-    void should_return_error_message_when_park_given_no_space_left() {
+    void should_return_error_message_when_park_given_no_position_left() {
         // Given
         ParkingLot parkingLot = new ParkingLot("Good Parking Lot");
         for (int i = 0; i < parkingLot.getCapacity(); i++){
