@@ -1,12 +1,12 @@
 package com.parkinglot;
 
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 public class ParkingLot {
     private static final int DEFAULT_CAPACITY = 10;
 
-    private Map<Ticket, Car> parkingRecord = new HashMap<>();
+    private Map<Ticket, Car> parkingRecord = new LinkedHashMap<>();
     private String name;
     private int capacity;
 
@@ -20,8 +20,16 @@ public class ParkingLot {
         this.capacity = capacity;
     }
 
+    public String getName() {
+        return name;
+    }
+
     public int getCapacity() {
         return capacity;
+    }
+
+    public int getCurrentCapacity() {
+        return parkingRecord.size();
     }
 
     public Ticket park(Car car) {
@@ -40,4 +48,5 @@ public class ParkingLot {
         ticket.setIsUsed();
         return parkingRecord.remove(ticket);
     }
+
 }

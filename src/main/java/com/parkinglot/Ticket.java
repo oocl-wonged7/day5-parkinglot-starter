@@ -4,6 +4,10 @@ public class Ticket {
     private String issuedBy;
     private Boolean isUsed = false;
 
+    Ticket(String issuedBy) {
+        this.issuedBy = issuedBy;
+    }
+
     public String getIssuedBy() {
         return issuedBy;
     }
@@ -14,9 +18,5 @@ public class Ticket {
 
     public void setIsUsed() {
         this.isUsed = true;
-    }
-
-    Ticket(String issuedBy) {
-        this.issuedBy = issuedBy;
     }
 }
