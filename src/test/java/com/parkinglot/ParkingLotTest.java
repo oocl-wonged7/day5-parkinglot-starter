@@ -67,6 +67,21 @@ public class ParkingLotTest {
     }
 
     @Test
+    void should_return_null_when_fetch_given_a_used_ticket(){
+        // Given
+        ParkingLot parkingLot = new ParkingLot("Good Parking Lot");
+        Car car = new Car();
+        Ticket ticket = parkingLot.park(car);
+        parkingLot.fetch(ticket);
+
+        // When
+        Car carFetchedWithUsedTicket = parkingLot.fetch(ticket);
+
+        // Then
+        assertNull(carFetchedWithUsedTicket);
+    }
+
+    @Test
     void should_return_null_when_park_given_no_space_left(){
         // Given
         ParkingLot parkingLot = new ParkingLot("Good Parking Lot");
