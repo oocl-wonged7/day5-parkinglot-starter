@@ -88,4 +88,40 @@ public class ParkingBoyTest {
         String exceptionMessage = exception.getMessage();
         assertTrue(expectedMessage.equals(exceptionMessage));
     }
+
+    @Test
+    void should_return_error_message_when_park_given_no_space_left_() {
+        // Given
+        ParkingLot parkingLot = new ParkingLot("Good Parking Lot");
+        ParkingBoy parkingBoy = new ParkingBoy(parkingLot);
+        Car car1 = new Car();
+        parkingLot.park(car1);
+        Car car2 = new Car();
+        parkingLot.park(car2);
+        Car car3 = new Car();
+        parkingLot.park(car3);
+        Car car4 = new Car();
+        parkingLot.park(car4);
+        Car car5 = new Car();
+        parkingLot.park(car5);
+        Car car6 = new Car();
+        parkingLot.park(car6);
+        Car car7 = new Car();
+        parkingLot.park(car7);
+        Car car8 = new Car();
+        parkingLot.park(car8);
+        Car car9 = new Car();
+        parkingLot.park(car9);
+        Car car10 = new Car();
+        parkingLot.park(car10);
+        Car car11 = new Car();
+
+        // When
+        Exception exception = assertThrows(NoAvailablePositionException.class, () -> parkingBoy.park(car11));
+
+        // Then
+        String expectedMessage = "No available position.";
+        String exceptionMessage = exception.getMessage();
+        assertTrue(expectedMessage.equals(exceptionMessage));
+    }
 }
