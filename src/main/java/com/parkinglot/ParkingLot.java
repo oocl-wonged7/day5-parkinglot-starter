@@ -49,4 +49,8 @@ public class ParkingLot{
         return parkingRecord.remove(ticket);
     }
 
+    public int getPosition(){
+        return this.capacity - parkingRecord.size();
+    }
+
 }
