@@ -3,7 +3,7 @@ package com.parkinglot;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-public class ParkingLot {
+public class ParkingLot{
     private static final int DEFAULT_CAPACITY = 10;
 
     private Map<Ticket, Car> parkingRecord = new LinkedHashMap<>();

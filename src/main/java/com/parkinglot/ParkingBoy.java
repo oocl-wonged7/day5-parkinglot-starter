@@ -2,9 +2,9 @@ package com.parkinglot;
 
 import java.util.*;
 
-public class ParkingBoy {
-    private ParkingLot parkingLot;
-    private Map<String, ParkingLot> parkingLots;
+public abstract class ParkingBoy {
+    protected ParkingLot parkingLot;
+    protected Map<String, ParkingLot> parkingLots;
 
     public ParkingBoy() {
         this.parkingLots = new HashMap<>();
@@ -20,16 +20,7 @@ public class ParkingBoy {
         this.parkingLots.put(parkingLot.getName(), parkingLot);
     }
 
-    public Ticket park(Car car) {
-        List<ParkingLot> parkingLotList = new ArrayList<>(parkingLots.values());
-        Collections.reverse(parkingLotList);
-        for (ParkingLot parkingLot : parkingLotList) {
-            if (parkingLot.getCurrentCapacity() < parkingLot.getCapacity()) {
-                return parkingLot.park(car);
-            }
-        }
-        throw new NoAvailablePositionException();
-    }
+    public abstract Ticket park(Car car);
 
     public Car fetch(Ticket ticket) {
         if (!parkingLots.containsKey(ticket.getIssuedBy())) {
