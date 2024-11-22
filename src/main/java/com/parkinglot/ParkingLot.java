@@ -20,6 +20,10 @@ public class ParkingLot {
         this.capacity = capacity;
     }
 
+    public int getCapacity() {
+        return capacity;
+    }
+
     public Ticket park(Car car) {
         if (parkingRecord.size() >= capacity) {
             throw new NoAvailablePositionException();

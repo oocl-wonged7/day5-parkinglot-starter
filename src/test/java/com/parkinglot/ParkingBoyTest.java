@@ -94,30 +94,14 @@ public class ParkingBoyTest {
         // Given
         ParkingLot parkingLot = new ParkingLot("Good Parking Lot");
         ParkingBoy parkingBoy = new ParkingBoy(parkingLot);
-        Car car1 = new Car();
-        parkingLot.park(car1);
-        Car car2 = new Car();
-        parkingLot.park(car2);
-        Car car3 = new Car();
-        parkingLot.park(car3);
-        Car car4 = new Car();
-        parkingLot.park(car4);
-        Car car5 = new Car();
-        parkingLot.park(car5);
-        Car car6 = new Car();
-        parkingLot.park(car6);
-        Car car7 = new Car();
-        parkingLot.park(car7);
-        Car car8 = new Car();
-        parkingLot.park(car8);
-        Car car9 = new Car();
-        parkingLot.park(car9);
-        Car car10 = new Car();
-        parkingLot.park(car10);
-        Car car11 = new Car();
+        for (int i = 0; i < parkingLot.getCapacity(); i++){
+            Car car = new Car();
+            parkingBoy.park(car);
+        }
+        Car anotherCar = new Car();
 
         // When
-        Exception exception = assertThrows(NoAvailablePositionException.class, () -> parkingBoy.park(car11));
+        Exception exception = assertThrows(NoAvailablePositionException.class, () -> parkingBoy.park(anotherCar));
 
         // Then
         String expectedMessage = "No available position.";
