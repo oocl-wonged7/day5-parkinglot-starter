@@ -10,7 +10,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class ParkingLotTest {
     @Test
-    void should_return_ticket_when_park_given_a_car(){
+    void should_return_ticket_when_park_given_a_car() throws Exception {
         // Given
         ParkingLot parkingLot = new ParkingLot("Good Parking Lot");
         Car car = new Car();
@@ -89,7 +89,7 @@ public class ParkingLotTest {
     }
 
     @Test
-    void should_return_null_when_park_given_no_space_left(){
+    void should_return_null_when_park_given_no_space_left() throws Exception {
         // Given
         ParkingLot parkingLot = new ParkingLot("Good Parking Lot");
         Car car1 = new Car();
@@ -115,9 +115,11 @@ public class ParkingLotTest {
         Car car11 = new Car();
 
         // When
-        Ticket ticket = parkingLot.park(car11);
+        Exception exception = assertThrows(Exception.class, () -> parkingLot.park(car11));
 
         // Then
-        assertNull(ticket);
+        String expectedMessage = "No available position.";
+        String exceptionMessage = exception.getMessage();
+        assertTrue(exceptionMessage.contains(expectedMessage));
     }
 }

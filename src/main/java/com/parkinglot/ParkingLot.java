@@ -6,6 +6,7 @@ import java.util.Map;
 public class ParkingLot {
     private static final int DEFAULT_CAPACITY = 10;
     public static final String UNRECOGNIZED_PARKING_TICKET_MESSAGE = "Unrecognized parking ticket.";
+    public static final String NO_AVAILABLE_POSITION_MESSAGE = "No available position.";
 
     private Map<Ticket, Car> parkingRecord = new HashMap<Ticket, Car>();
     private String name;
@@ -21,9 +22,9 @@ public class ParkingLot {
         this.capacity = capacity;
     }
 
-    public Ticket park(Car car) {
+    public Ticket park(Car car) throws Exception {
         if (parkingRecord.size() >= capacity) {
-            return null;
+            throw new Exception(NO_AVAILABLE_POSITION_MESSAGE);
         }
         Ticket ticket = new Ticket(name);
         parkingRecord.put(ticket, car);
