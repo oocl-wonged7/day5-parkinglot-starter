@@ -28,10 +28,13 @@ public class ParkingBoy {
                 return parkingLot.park(car);
             }
         }
-        throw new UnrecognizedParkingTicketException();
+        throw new NoAvailablePositionException();
     }
 
     public Car fetch(Ticket ticket) {
+        if (!parkingLots.containsKey(ticket.getIssuedBy())) {
+            throw new UnrecognizedParkingTicketException();
+        }
         ParkingLot parkingLot = parkingLots.get(ticket.getIssuedBy());
         return parkingLot.fetch(ticket);
     }

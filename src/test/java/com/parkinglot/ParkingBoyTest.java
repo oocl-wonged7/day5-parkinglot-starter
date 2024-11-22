@@ -59,7 +59,7 @@ public class ParkingBoyTest {
         ParkingLot parkingLot = new ParkingLot("Good Parking Lot");
         ParkingBoy parkingBoy = new ParkingBoy(parkingLot);
         Car car = new Car();
-        parkingLot.park(car);
+        parkingBoy.park(car);
         Ticket wrongTicket = new Ticket("another Parking Lot");
 
         // When
@@ -77,8 +77,8 @@ public class ParkingBoyTest {
         ParkingLot parkingLot = new ParkingLot("Good Parking Lot");
         ParkingBoy parkingBoy = new ParkingBoy(parkingLot);
         Car car = new Car();
-        Ticket ticket = parkingLot.park(car);
-        parkingLot.fetch(ticket);
+        Ticket ticket = parkingBoy.park(car);
+        parkingBoy.fetch(ticket);
 
         // When
         Exception exception = assertThrows(UnrecognizedParkingTicketException.class, () -> parkingBoy.fetch(ticket));

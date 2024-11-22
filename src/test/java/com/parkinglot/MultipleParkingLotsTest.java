@@ -2,6 +2,9 @@ package com.parkinglot;
 
 import org.junit.jupiter.api.Test;
 
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 public class MultipleParkingLotsTest {
     @Test
     void should_park_to_parking_lot_1_when_park_given_both_parking_lot_have_position(){
@@ -65,5 +68,47 @@ public class MultipleParkingLotsTest {
         // Then
         assert(firstCar.equals(firstCarFetched));
         assert(secondCar.equals(secondCarFetched));
+    }
+
+    @Test
+    void should_print_error_message_when_fetch_given_a_wrong_ticket_and_a_parking_lot() {
+        // Given
+        ParkingLot firstParkingLot = new ParkingLot("First Parking Lot");
+        ParkingLot secondParkingLot = new ParkingLot("Second Parking Lot");
+        ParkingBoy parkingBoy = new ParkingBoy();
+        parkingBoy.addParkingLot(firstParkingLot);
+        parkingBoy.addParkingLot(secondParkingLot);
+        Car car = new Car();
+        parkingBoy.park(car);
+        Ticket wrongTicket = new Ticket("Third Parking Lot");
+
+        // When
+        Exception exception = assertThrows(Exception.class, () -> parkingBoy.fetch(wrongTicket));
+
+        // Then
+        String expectedMessage = "Unrecognized parking ticket.";
+        String exceptionMessage = exception.getMessage();
+        assertTrue(expectedMessage.equals(exceptionMessage));
+    }
+
+    @Test
+    void should_return_error_message_when_fetch_given_a_used_ticket_and_a_parking_lot() {
+        // Given
+        ParkingLot firstParkingLot = new ParkingLot("First Parking Lot");
+        ParkingLot secondParkingLot = new ParkingLot("Second Parking Lot");
+        ParkingBoy parkingBoy = new ParkingBoy();
+        parkingBoy.addParkingLot(firstParkingLot);
+        parkingBoy.addParkingLot(secondParkingLot);
+        Car car = new Car();
+        Ticket ticket = parkingBoy.park(car);
+        parkingBoy.fetch(ticket);
+
+        // When
+        Exception exception = assertThrows(Exception.class, () -> parkingBoy.fetch(ticket));
+
+        // Then
+        String expectedMessage = "Unrecognized parking ticket.";
+        String exceptionMessage = exception.getMessage();
+        assertTrue(expectedMessage.equals(exceptionMessage));
     }
 }
