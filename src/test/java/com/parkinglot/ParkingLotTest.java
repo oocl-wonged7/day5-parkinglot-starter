@@ -52,11 +52,11 @@ public class ParkingLotTest {
     }
 
     @Test
-    void should_return_error_when_fetch_car_given_wrong_ticket(){
+    void should_return_null_when_fetch_car_given_wrong_ticket(){
         // Given
         ParkingLot parkingLot = new ParkingLot("Good Parking Lot");
         Car car = new Car();
-        Ticket ticket = parkingLot.park(car);
+        parkingLot.park(car);
         Ticket wrongTicket = new Ticket("another Parking Lot");
 
         // When
@@ -64,6 +64,39 @@ public class ParkingLotTest {
 
         // Then
         assertNull(carFetched);
+    }
+
+    @Test
+    void should_return_null_when_park_given_no_space_left(){
+        // Given
+        ParkingLot parkingLot = new ParkingLot("Good Parking Lot");
+        Car car1 = new Car();
+        parkingLot.park(car1);
+        Car car2 = new Car();
+        parkingLot.park(car2);
+        Car car3 = new Car();
+        parkingLot.park(car3);
+        Car car4 = new Car();
+        parkingLot.park(car4);
+        Car car5 = new Car();
+        parkingLot.park(car5);
+        Car car6 = new Car();
+        parkingLot.park(car6);
+        Car car7 = new Car();
+        parkingLot.park(car7);
+        Car car8 = new Car();
+        parkingLot.park(car8);
+        Car car9 = new Car();
+        parkingLot.park(car9);
+        Car car10 = new Car();
+        parkingLot.park(car10);
+        Car car11 = new Car();
+
+        // When
+        Ticket ticket = parkingLot.park(car11);
+
+        // Then
+        assertNull(ticket);
     }
 
 }
