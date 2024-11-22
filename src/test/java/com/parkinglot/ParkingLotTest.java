@@ -80,7 +80,7 @@ public class ParkingLotTest {
         parkingLot.fetch(ticket);
 
         // When
-        Exception exception = assertThrows(Exception.class, () -> parkingLot.fetch(ticket));
+        Exception exception = assertThrows(UnrecognizedParkingTicketException.class, () -> parkingLot.fetch(ticket));
 
         // Then
         String expectedMessage = "Unrecognized parking ticket.";
@@ -115,7 +115,7 @@ public class ParkingLotTest {
         Car car11 = new Car();
 
         // When
-        Exception exception = assertThrows(Exception.class, () -> parkingLot.park(car11));
+        Exception exception = assertThrows(NoAvailablePositionException.class, () -> parkingLot.park(car11));
 
         // Then
         String expectedMessage = "No available position.";
