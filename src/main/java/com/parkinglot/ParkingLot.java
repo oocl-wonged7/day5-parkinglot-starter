@@ -8,7 +8,7 @@ public class ParkingLot {
     public static final String UNRECOGNIZED_PARKING_TICKET_MESSAGE = "Unrecognized parking ticket.";
     public static final String NO_AVAILABLE_POSITION_MESSAGE = "No available position.";
 
-    private Map<Ticket, Car> parkingRecord = new HashMap<Ticket, Car>();
+    private Map<Ticket, Car> parkingRecord = new HashMap<>();
     private String name;
     private int capacity;
 
@@ -22,7 +22,7 @@ public class ParkingLot {
         this.capacity = capacity;
     }
 
-    public Ticket park(Car car) throws Exception {
+    public Ticket park(Car car) {
         if (parkingRecord.size() >= capacity) {
             throw new NoAvailablePositionException(NO_AVAILABLE_POSITION_MESSAGE);
         }
@@ -31,7 +31,7 @@ public class ParkingLot {
         return ticket;
     }
 
-    public Car fetch(Ticket ticket) throws Exception {
+    public Car fetch(Ticket ticket) {
         if (ticket.getIssuedBy() != this.name || ticket.isUsed()) {
             throw new UnrecognizedParkingTicketException(UNRECOGNIZED_PARKING_TICKET_MESSAGE);
         }

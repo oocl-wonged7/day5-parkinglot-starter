@@ -1,16 +1,12 @@
 package com.parkinglot;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import java.io.ByteArrayOutputStream;
-import java.io.PrintStream;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 public class ParkingLotTest {
     @Test
-    void should_return_ticket_when_park_given_a_car() throws Exception {
+    void should_return_ticket_when_park_given_a_car() {
         // Given
         ParkingLot parkingLot = new ParkingLot("Good Parking Lot");
         Car car = new Car();
@@ -23,7 +19,7 @@ public class ParkingLotTest {
     }
 
     @Test
-    void should_return_car_when_fetch_given_a_ticket() throws Exception {
+    void should_return_car_when_fetch_given_a_ticket() {
         // Given
         ParkingLot parkingLot = new ParkingLot("Good Parking Lot");
         Car car = new Car();
@@ -37,7 +33,7 @@ public class ParkingLotTest {
     }
 
     @Test
-    void should_return_right_car_when_fetch_twice_given_two_ticket() throws Exception {
+    void should_return_right_car_when_fetch_twice_given_two_ticket() {
         // Given
         ParkingLot parkingLot = new ParkingLot("Good Parking Lot");
         Car firstCar = new Car();
@@ -55,7 +51,7 @@ public class ParkingLotTest {
     }
 
     @Test
-    void should_print_error_message_when_fetch_given_a_wrong_ticket() throws Exception {
+    void should_print_error_message_when_fetch_given_a_wrong_ticket() {
         // Given
         ParkingLot parkingLot = new ParkingLot("Good Parking Lot");
         Car car = new Car();
@@ -72,7 +68,7 @@ public class ParkingLotTest {
     }
 
     @Test
-    void should_return_error_message_when_fetch_given_a_used_ticket() throws Exception {
+    void should_return_error_message_when_fetch_given_a_used_ticket() {
         // Given
         ParkingLot parkingLot = new ParkingLot("Good Parking Lot");
         Car car = new Car();
@@ -89,7 +85,7 @@ public class ParkingLotTest {
     }
 
     @Test
-    void should_return_error_message_when_park_given_no_space_left() throws Exception {
+    void should_return_error_message_when_park_given_no_space_left() {
         // Given
         ParkingLot parkingLot = new ParkingLot("Good Parking Lot");
         Car car1 = new Car();

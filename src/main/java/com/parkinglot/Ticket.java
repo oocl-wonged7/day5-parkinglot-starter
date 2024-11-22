@@ -12,7 +12,7 @@ public class Ticket {
         return isUsed;
     }
 
-    public void setIsUsed(){
+    public void setIsUsed() {
         this.isUsed = true;
     }
 
