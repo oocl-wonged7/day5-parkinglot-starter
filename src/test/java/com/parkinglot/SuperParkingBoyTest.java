@@ -1,5 +1,6 @@
 package com.parkinglot;
 
+import com.parkinglot.strategy.SuperParkingStrategy;
 import org.junit.jupiter.api.Test;
 
 public class SuperParkingBoyTest {

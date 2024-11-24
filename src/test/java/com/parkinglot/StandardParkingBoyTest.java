@@ -1,5 +1,7 @@
 package com.parkinglot;
 
+import com.parkinglot.exception.NoAvailablePositionException;
+import com.parkinglot.exception.UnrecognizedParkingTicketException;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -31,7 +33,7 @@ public class StandardParkingBoyTest {
         Car carFetched = standardParkingBoy.fetch(ticket);
 
         // Then
-        assert(carFetched.equals(car));
+        assert (carFetched.equals(car));
     }
 
     @Test
@@ -68,7 +70,7 @@ public class StandardParkingBoyTest {
         // Then
         String expectedMessage = "Unrecognized parking ticket.";
         String exceptionMessage = exception.getMessage();
-        assertTrue(expectedMessage.equals(exceptionMessage));
+        assertEquals(expectedMessage, exceptionMessage);
     }
 
     @Test
@@ -86,7 +88,7 @@ public class StandardParkingBoyTest {
         // Then
         String expectedMessage = "Unrecognized parking ticket.";
         String exceptionMessage = exception.getMessage();
-        assertTrue(expectedMessage.equals(exceptionMessage));
+        assertEquals(expectedMessage, exceptionMessage);
     }
 
     @Test
@@ -94,7 +96,7 @@ public class StandardParkingBoyTest {
         // Given
         ParkingLot parkingLot = new ParkingLot("Good Parking Lot");
         ParkingBoy standardParkingBoy = new ParkingBoy(parkingLot);
-        for (int i = 0; i < parkingLot.getCapacity(); i++){
+        for (int i = 0; i < parkingLot.getCapacity(); i++) {
             Car car = new Car();
             parkingLot.park(car);
         }
@@ -106,6 +108,6 @@ public class StandardParkingBoyTest {
         // Then
         String expectedMessage = "No available position.";
         String exceptionMessage = exception.getMessage();
-        assertTrue(expectedMessage.equals(exceptionMessage));
+        assertEquals(expectedMessage, exceptionMessage);
     }
 }

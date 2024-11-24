@@ -1,5 +1,7 @@
 package com.parkinglot;
 
+import com.parkinglot.exception.NoAvailablePositionException;
+import com.parkinglot.exception.UnrecognizedParkingTicketException;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -29,7 +31,7 @@ public class ParkingLotTest {
         Car carFetched = parkingLot.fetch(ticket);
 
         // Then
-        assert(carFetched.equals(car));
+        assert (carFetched.equals(car));
     }
 
     @Test
@@ -64,7 +66,7 @@ public class ParkingLotTest {
         // Then
         String expectedMessage = "Unrecognized parking ticket.";
         String exceptionMessage = exception.getMessage();
-        assertTrue(expectedMessage.equals(exceptionMessage));
+        assertEquals(expectedMessage, exceptionMessage);
     }
 
     @Test
@@ -81,14 +83,14 @@ public class ParkingLotTest {
         // Then
         String expectedMessage = "Unrecognized parking ticket.";
         String exceptionMessage = exception.getMessage();
-        assertTrue(expectedMessage.equals(exceptionMessage));
+        assertEquals(expectedMessage, exceptionMessage);
     }
 
     @Test
     void should_return_error_message_when_park_given_no_position_left() {
         // Given
         ParkingLot parkingLot = new ParkingLot("Good Parking Lot");
-        for (int i = 0; i < parkingLot.getCapacity(); i++){
+        for (int i = 0; i < parkingLot.getCapacity(); i++) {
             Car car = new Car();
             parkingLot.park(car);
         }
@@ -100,6 +102,6 @@ public class ParkingLotTest {
         // Then
         String expectedMessage = "No available position.";
         String exceptionMessage = exception.getMessage();
-        assertTrue(expectedMessage.equals(exceptionMessage));
+        assertEquals(expectedMessage, exceptionMessage);
     }
 }

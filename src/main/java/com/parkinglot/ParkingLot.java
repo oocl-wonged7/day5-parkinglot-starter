@@ -1,14 +1,17 @@
 package com.parkinglot;
 
+import com.parkinglot.exception.NoAvailablePositionException;
+import com.parkinglot.exception.UnrecognizedParkingTicketException;
+
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-public class ParkingLot{
+public class ParkingLot {
     private static final int DEFAULT_CAPACITY = 10;
 
-    private Map<Ticket, Car> parkingRecord = new LinkedHashMap<>();
-    private String name;
-    private int capacity;
+    private final Map<Ticket, Car> parkingRecord = new LinkedHashMap<>();
+    private final String name;
+    private final int capacity;
 
     ParkingLot(String name) {
         this.name = name;
@@ -45,15 +48,15 @@ public class ParkingLot{
         return parkingRecord.remove(ticket);
     }
 
-    public int getPosition(){
+    public int getPosition() {
         return this.capacity - parkingRecord.size();
     }
 
-    public double getPositionRate(){
+    public double getPositionRate() {
         return this.getPosition() / this.capacity;
     }
 
-    public boolean isFull(){
+    public boolean isFull() {
         return parkingRecord.size() >= capacity;
     }
 }

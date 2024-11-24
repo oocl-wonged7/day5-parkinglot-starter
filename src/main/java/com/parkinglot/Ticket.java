@@ -1,7 +1,7 @@
 package com.parkinglot;
 
 public class Ticket {
-    private String issuedBy;
+    private final String issuedBy;
     private Boolean isUsed = false;
 
     Ticket(String issuedBy) {

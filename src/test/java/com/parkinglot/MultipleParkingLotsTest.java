@@ -1,13 +1,15 @@
 package com.parkinglot;
 
+import com.parkinglot.exception.NoAvailablePositionException;
+import com.parkinglot.strategy.StardardParkingStrategy;
 import org.junit.jupiter.api.Test;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class MultipleParkingLotsTest {
     @Test
-    void should_park_to_parking_lot_1_when_park_given_both_parking_lot_have_position(){
+    void should_park_to_parking_lot_1_when_park_given_both_parking_lot_have_position() {
         // Given
         ParkingLot firstParkingLot = new ParkingLot("First Parking Lot");
         ParkingLot secondParkingLot = new ParkingLot("Second Parking Lot");
@@ -20,18 +22,18 @@ public class MultipleParkingLotsTest {
         Ticket ticket = standardParkingBoy.park(car);
 
         // Then
-        assert(ticket.getIssuedBy().equals(firstParkingLot.getName()));
+        assert (ticket.getIssuedBy().equals(firstParkingLot.getName()));
     }
 
     @Test
-    void should_park_to_parking_log_2_when_park_given_parking_lot_1_is_full(){
+    void should_park_to_parking_log_2_when_park_given_parking_lot_1_is_full() {
         // Given
         ParkingLot firstParkingLot = new ParkingLot("First Parking Lot");
         ParkingLot secondParkingLot = new ParkingLot("Second Parking Lot");
         ParkingBoy standardParkingBoy = new ParkingBoy();
         standardParkingBoy.addParkingLot(firstParkingLot);
         standardParkingBoy.addParkingLot(secondParkingLot);
-        for (int i = 0; i < firstParkingLot.getCapacity(); i++){
+        for (int i = 0; i < firstParkingLot.getCapacity(); i++) {
             Car car = new Car();
             standardParkingBoy.park(car);
         }
@@ -41,18 +43,18 @@ public class MultipleParkingLotsTest {
         Ticket ticket = standardParkingBoy.park(anotherCar);
 
         // Then
-        assert(ticket.getIssuedBy().equals(secondParkingLot.getName()));
+        assert (ticket.getIssuedBy().equals(secondParkingLot.getName()));
     }
 
     @Test
-    void should_fetch_2_car_in_correct_order_when_fetch_twice_given_fetch_from_both_parking_lot(){
+    void should_fetch_2_car_in_correct_order_when_fetch_twice_given_fetch_from_both_parking_lot() {
         // Given
         ParkingLot firstParkingLot = new ParkingLot("First Parking Lot");
         ParkingLot secondParkingLot = new ParkingLot("Second Parking Lot");
         ParkingBoy standardParkingBoy = new ParkingBoy();
         standardParkingBoy.addParkingLot(firstParkingLot);
         standardParkingBoy.addParkingLot(secondParkingLot);
-        for (int i = 0; i < firstParkingLot.getCapacity() - 1; i++){
+        for (int i = 0; i < firstParkingLot.getCapacity() - 1; i++) {
             Car car = new Car();
             standardParkingBoy.park(car);
         }
@@ -66,8 +68,8 @@ public class MultipleParkingLotsTest {
         Car secondCarFetched = standardParkingBoy.fetch(secnodTicket);
 
         // Then
-        assert(firstCar.equals(firstCarFetched));
-        assert(secondCar.equals(secondCarFetched));
+        assert (firstCar.equals(firstCarFetched));
+        assert (secondCar.equals(secondCarFetched));
     }
 
     @Test
@@ -88,7 +90,7 @@ public class MultipleParkingLotsTest {
         // Then
         String expectedMessage = "Unrecognized parking ticket.";
         String exceptionMessage = exception.getMessage();
-        assertTrue(expectedMessage.equals(exceptionMessage));
+        assertEquals(expectedMessage, exceptionMessage);
     }
 
     @Test
@@ -109,7 +111,7 @@ public class MultipleParkingLotsTest {
         // Then
         String expectedMessage = "Unrecognized parking ticket.";
         String exceptionMessage = exception.getMessage();
-        assertTrue(expectedMessage.equals(exceptionMessage));
+        assertEquals(expectedMessage, exceptionMessage);
     }
 
     @Test
@@ -120,11 +122,11 @@ public class MultipleParkingLotsTest {
         ParkingBoy standardParkingBoy = new ParkingBoy(new StardardParkingStrategy());
         standardParkingBoy.addParkingLot(firstParkingLot);
         standardParkingBoy.addParkingLot(secondParkingLot);
-        for (int i = 0; i < firstParkingLot.getCapacity(); i++){
+        for (int i = 0; i < firstParkingLot.getCapacity(); i++) {
             Car car = new Car();
             firstParkingLot.park(car);
         }
-        for (int i = 0; i < secondParkingLot.getCapacity(); i++){
+        for (int i = 0; i < secondParkingLot.getCapacity(); i++) {
             Car car = new Car();
             secondParkingLot.park(car);
         }
@@ -136,6 +138,6 @@ public class MultipleParkingLotsTest {
         // Then
         String expectedMessage = "No available position.";
         String exceptionMessage = exception.getMessage();
-        assertTrue(expectedMessage.equals(exceptionMessage));
+        assertEquals(expectedMessage, exceptionMessage);
     }
 }

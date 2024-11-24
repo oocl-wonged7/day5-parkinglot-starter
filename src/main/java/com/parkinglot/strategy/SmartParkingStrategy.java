@@ -1,4 +1,7 @@
-package com.parkinglot;
+package com.parkinglot.strategy;
+
+import com.parkinglot.*;
+import com.parkinglot.exception.NoAvailablePositionException;
 
 import java.util.ArrayList;
 import java.util.Comparator;

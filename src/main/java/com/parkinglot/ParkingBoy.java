@@ -1,9 +1,14 @@
 package com.parkinglot;
 
-import java.util.*;
+import com.parkinglot.strategy.ParkingStrategy;
+import com.parkinglot.strategy.StardardParkingStrategy;
+import com.parkinglot.exception.UnrecognizedParkingTicketException;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class ParkingBoy {
-    private Map<String, ParkingLot> parkingLots;
+    private final Map<String, ParkingLot> parkingLots;
     private ParkingStrategy parkingStrategy = new StardardParkingStrategy();
 
     public ParkingBoy() {
@@ -30,9 +35,9 @@ public class ParkingBoy {
         this.parkingLots.put(parkingLot.getName(), parkingLot);
     }
 
-    public Ticket park(Car car){
+    public Ticket park(Car car) {
         return parkingStrategy.park(car, parkingLots);
-    };
+    }
 
     public Car fetch(Ticket ticket) {
         if (!parkingLots.containsKey(ticket.getIssuedBy())) {
