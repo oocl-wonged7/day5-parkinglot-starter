@@ -8,7 +8,7 @@ public class SuperParkingBoyTest {
         // Given
         ParkingLot firstParkingLot = new ParkingLot("First Parking Lot", 22);
         ParkingLot secondParkingLot = new ParkingLot("Second Parking Lot", 20);
-        SuperParkingBoy superParkingBoy = new SuperParkingBoy();
+        ParkingBoy superParkingBoy = new ParkingBoy(new SuperParkingStrategy());
         superParkingBoy.addParkingLot(firstParkingLot);
         superParkingBoy.addParkingLot(secondParkingLot);
         firstParkingLot.park(new Car());
@@ -26,13 +26,13 @@ public class SuperParkingBoyTest {
         // Given
         ParkingLot firstParkingLot = new ParkingLot("First Parking Lot", 20);
         ParkingLot secondParkingLot = new ParkingLot("Second Parking Lot", 20);
-        SmartParkingBoy smartParkingBoy = new SmartParkingBoy();
-        smartParkingBoy.addParkingLot(firstParkingLot);
-        smartParkingBoy.addParkingLot(secondParkingLot);
+        ParkingBoy superParkingBoy = new ParkingBoy(new SuperParkingStrategy());
+        superParkingBoy.addParkingLot(firstParkingLot);
+        superParkingBoy.addParkingLot(secondParkingLot);
         Car car = new Car();
 
         // When
-        Ticket ticket = smartParkingBoy.park(car);
+        Ticket ticket = superParkingBoy.park(car);
 
         // Then
         assert (firstParkingLot.getName().equals(ticket.getIssuedBy()));

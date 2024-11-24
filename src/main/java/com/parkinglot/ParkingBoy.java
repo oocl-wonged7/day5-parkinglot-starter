@@ -2,25 +2,37 @@ package com.parkinglot;
 
 import java.util.*;
 
-public abstract class ParkingBoy {
-    protected ParkingLot parkingLot;
-    protected Map<String, ParkingLot> parkingLots;
+public class ParkingBoy {
+    private Map<String, ParkingLot> parkingLots;
+    private ParkingStrategy parkingStrategy = new StardardParkingStrategy();
 
     public ParkingBoy() {
         this.parkingLots = new HashMap<>();
     }
 
     public ParkingBoy(ParkingLot parkingLot) {
-        this.parkingLot = parkingLot;
         this.parkingLots = new HashMap<>();
         parkingLots.put(parkingLot.getName(), parkingLot);
+    }
+
+    public ParkingBoy(ParkingStrategy parkingStrategy) {
+        this.parkingLots = new HashMap<>();
+        this.parkingStrategy = parkingStrategy;
+    }
+
+    public ParkingBoy(ParkingLot parkingLot, ParkingStrategy parkingStrategy) {
+        this.parkingLots = new HashMap<>();
+        parkingLots.put(parkingLot.getName(), parkingLot);
+        this.parkingStrategy = parkingStrategy;
     }
 
     public void addParkingLot(ParkingLot parkingLot) {
         this.parkingLots.put(parkingLot.getName(), parkingLot);
     }
 
-    public abstract Ticket park(Car car);
+    public Ticket park(Car car){
+        return parkingStrategy.park(car, parkingLots);
+    };
 
     public Car fetch(Ticket ticket) {
         if (!parkingLots.containsKey(ticket.getIssuedBy())) {

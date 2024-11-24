@@ -2,17 +2,11 @@ package com.parkinglot;
 
 import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.Map;
 
-public class SmartParkingBoy extends ParkingBoy {
-    public SmartParkingBoy() {
-        super();
-    }
-
-    public SmartParkingBoy(ParkingLot parkingLot) {
-        super(parkingLot);
-    }
-
-    public Ticket park(Car car) {
+public class SmartParkingStrategy implements ParkingStrategy {
+    @Override
+    public Ticket park(Car car, Map<String, ParkingLot> parkingLots) {
         ParkingLot parkingLotWithMostPosition = parkingLots.values().stream()
                 .max(Comparator.comparingInt(ParkingLot::getPosition)
                         .thenComparing(parkingLot -> new ArrayList<>(parkingLots.values()).indexOf(parkingLot)))

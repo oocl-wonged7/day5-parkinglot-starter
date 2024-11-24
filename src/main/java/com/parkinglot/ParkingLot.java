@@ -28,10 +28,6 @@ public class ParkingLot{
         return capacity;
     }
 
-    public int getCurrentCapacity() {
-        return parkingRecord.size();
-    }
-
     public Ticket park(Car car) {
         if (parkingRecord.size() >= capacity) {
             throw new NoAvailablePositionException();
@@ -53,4 +49,11 @@ public class ParkingLot{
         return this.capacity - parkingRecord.size();
     }
 
+    public double getPositionRate(){
+        return this.getPosition() / this.capacity;
+    }
+
+    public boolean isFull(){
+        return parkingRecord.size() >= capacity;
+    }
 }

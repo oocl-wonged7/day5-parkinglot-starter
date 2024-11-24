@@ -11,7 +11,7 @@ public class MultipleParkingLotsTest {
         // Given
         ParkingLot firstParkingLot = new ParkingLot("First Parking Lot");
         ParkingLot secondParkingLot = new ParkingLot("Second Parking Lot");
-        StandardParkingBoy standardParkingBoy = new StandardParkingBoy();
+        ParkingBoy standardParkingBoy = new ParkingBoy();
         standardParkingBoy.addParkingLot(firstParkingLot);
         standardParkingBoy.addParkingLot(secondParkingLot);
         Car car = new Car();
@@ -28,7 +28,7 @@ public class MultipleParkingLotsTest {
         // Given
         ParkingLot firstParkingLot = new ParkingLot("First Parking Lot");
         ParkingLot secondParkingLot = new ParkingLot("Second Parking Lot");
-        StandardParkingBoy standardParkingBoy = new StandardParkingBoy();
+        ParkingBoy standardParkingBoy = new ParkingBoy();
         standardParkingBoy.addParkingLot(firstParkingLot);
         standardParkingBoy.addParkingLot(secondParkingLot);
         for (int i = 0; i < firstParkingLot.getCapacity(); i++){
@@ -49,7 +49,7 @@ public class MultipleParkingLotsTest {
         // Given
         ParkingLot firstParkingLot = new ParkingLot("First Parking Lot");
         ParkingLot secondParkingLot = new ParkingLot("Second Parking Lot");
-        StandardParkingBoy standardParkingBoy = new StandardParkingBoy();
+        ParkingBoy standardParkingBoy = new ParkingBoy();
         standardParkingBoy.addParkingLot(firstParkingLot);
         standardParkingBoy.addParkingLot(secondParkingLot);
         for (int i = 0; i < firstParkingLot.getCapacity() - 1; i++){
@@ -75,7 +75,7 @@ public class MultipleParkingLotsTest {
         // Given
         ParkingLot firstParkingLot = new ParkingLot("First Parking Lot");
         ParkingLot secondParkingLot = new ParkingLot("Second Parking Lot");
-        StandardParkingBoy standardParkingBoy = new StandardParkingBoy();
+        ParkingBoy standardParkingBoy = new ParkingBoy();
         standardParkingBoy.addParkingLot(firstParkingLot);
         standardParkingBoy.addParkingLot(secondParkingLot);
         Car car = new Car();
@@ -96,7 +96,7 @@ public class MultipleParkingLotsTest {
         // Given
         ParkingLot firstParkingLot = new ParkingLot("First Parking Lot");
         ParkingLot secondParkingLot = new ParkingLot("Second Parking Lot");
-        StandardParkingBoy standardParkingBoy = new StandardParkingBoy();
+        ParkingBoy standardParkingBoy = new ParkingBoy(new StardardParkingStrategy());
         standardParkingBoy.addParkingLot(firstParkingLot);
         standardParkingBoy.addParkingLot(secondParkingLot);
         Car car = new Car();
@@ -117,7 +117,7 @@ public class MultipleParkingLotsTest {
         // Given
         ParkingLot firstParkingLot = new ParkingLot("First Parking Lot");
         ParkingLot secondParkingLot = new ParkingLot("Second Parking Lot");
-        StandardParkingBoy standardParkingBoy = new StandardParkingBoy();
+        ParkingBoy standardParkingBoy = new ParkingBoy(new StardardParkingStrategy());
         standardParkingBoy.addParkingLot(firstParkingLot);
         standardParkingBoy.addParkingLot(secondParkingLot);
         for (int i = 0; i < firstParkingLot.getCapacity(); i++){

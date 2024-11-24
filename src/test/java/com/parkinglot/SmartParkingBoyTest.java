@@ -8,7 +8,7 @@ public class SmartParkingBoyTest {
         // Given
         ParkingLot firstParkingLot = new ParkingLot("First Parking Lot", 1);
         ParkingLot secondParkingLot = new ParkingLot("Second Parking Lot", 20);
-        SmartParkingBoy smartParkingBoy = new SmartParkingBoy();
+        ParkingBoy smartParkingBoy = new ParkingBoy(new SmartParkingStrategy());
         smartParkingBoy.addParkingLot(firstParkingLot);
         smartParkingBoy.addParkingLot(secondParkingLot);
         Car car = new Car();
@@ -25,7 +25,7 @@ public class SmartParkingBoyTest {
         // Given
         ParkingLot firstParkingLot = new ParkingLot("First Parking Lot", 20);
         ParkingLot secondParkingLot = new ParkingLot("Second Parking Lot", 20);
-        SmartParkingBoy smartParkingBoy = new SmartParkingBoy();
+        ParkingBoy smartParkingBoy = new ParkingBoy(new SmartParkingStrategy());
         smartParkingBoy.addParkingLot(firstParkingLot);
         smartParkingBoy.addParkingLot(secondParkingLot);
         Car car = new Car();

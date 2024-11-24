@@ -9,7 +9,7 @@ public class StandardParkingBoyTest {
     void should_return_ticket_when_park_given_a_car_and_a_parking_lot() {
         // Given
         ParkingLot parkingLot = new ParkingLot("Good Parking Lot");
-        StandardParkingBoy standardParkingBoy = new StandardParkingBoy(parkingLot);
+        ParkingBoy standardParkingBoy = new ParkingBoy(parkingLot);
         Car car = new Car();
 
         // When
@@ -23,7 +23,7 @@ public class StandardParkingBoyTest {
     void should_return_car_when_fetch_given_a_ticket_and_a_parking_lot() {
         // Given
         ParkingLot parkingLot = new ParkingLot("Good Parking Lot");
-        StandardParkingBoy standardParkingBoy = new StandardParkingBoy(parkingLot);
+        ParkingBoy standardParkingBoy = new ParkingBoy(parkingLot);
         Car car = new Car();
         Ticket ticket = parkingLot.park(car);
 
@@ -38,7 +38,7 @@ public class StandardParkingBoyTest {
     void should_return_right_car_when_fetch_twice_given_two_ticket_and_a_parking_lot() {
         // Given
         ParkingLot parkingLot = new ParkingLot("Good Parking Lot");
-        StandardParkingBoy standardParkingBoy = new StandardParkingBoy(parkingLot);
+        ParkingBoy standardParkingBoy = new ParkingBoy(parkingLot);
         Car firstCar = new Car();
         Ticket firstTicket = standardParkingBoy.park(firstCar);
         Car secondCar = new Car();
@@ -57,7 +57,7 @@ public class StandardParkingBoyTest {
     void should_print_error_message_when_fetch_given_a_wrong_ticket_and_a_parking_lot() {
         // Given
         ParkingLot parkingLot = new ParkingLot("Good Parking Lot");
-        StandardParkingBoy standardParkingBoy = new StandardParkingBoy(parkingLot);
+        ParkingBoy standardParkingBoy = new ParkingBoy(parkingLot);
         Car car = new Car();
         standardParkingBoy.park(car);
         Ticket wrongTicket = new Ticket("another Parking Lot");
@@ -75,7 +75,7 @@ public class StandardParkingBoyTest {
     void should_return_error_message_when_fetch_given_a_used_ticket_and_a_parking_lot() {
         // Given
         ParkingLot parkingLot = new ParkingLot("Good Parking Lot");
-        StandardParkingBoy standardParkingBoy = new StandardParkingBoy(parkingLot);
+        ParkingBoy standardParkingBoy = new ParkingBoy(parkingLot);
         Car car = new Car();
         Ticket ticket = standardParkingBoy.park(car);
         standardParkingBoy.fetch(ticket);
@@ -93,7 +93,7 @@ public class StandardParkingBoyTest {
     void should_return_error_message_when_park_given_a_parking_lot_and_no_position_left_() {
         // Given
         ParkingLot parkingLot = new ParkingLot("Good Parking Lot");
-        StandardParkingBoy standardParkingBoy = new StandardParkingBoy(parkingLot);
+        ParkingBoy standardParkingBoy = new ParkingBoy(parkingLot);
         for (int i = 0; i < parkingLot.getCapacity(); i++){
             Car car = new Car();
             parkingLot.park(car);
