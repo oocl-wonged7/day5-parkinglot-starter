@@ -41,7 +41,7 @@ public class ParkingLot {
     }
 
     public Car fetch(Ticket ticket) {
-        if (ticket.getIssuedBy() != this.name || ticket.isUsed()) {
+        if (ticket.getIssuedBy().equals(this.name) || ticket.isUsed()) {
             throw new UnrecognizedParkingTicketException();
         }
         ticket.setIsUsed();
@@ -53,7 +53,7 @@ public class ParkingLot {
     }
 
     public double getPositionRate() {
-        return this.getPosition() / this.capacity;
+        return (double) this.getPosition() / this.capacity;
     }
 
     public boolean isFull() {
